@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public class MeuBaseController<ENTITY extends MeuBaseEntity, REPO extends JpaRepository<ENTITY, String>> {
 	@Autowired
-	private REPO repo;
+	public REPO repo;
 
 	@DeleteMapping("/{id}")
 	public void deletePeloId(@PathVariable("id") String id) {
