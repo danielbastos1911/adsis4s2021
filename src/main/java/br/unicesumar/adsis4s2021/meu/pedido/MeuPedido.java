@@ -11,13 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import br.unicesumar.adsis4s2021.meu.base.MeuBaseEntity;
 import br.unicesumar.adsis4s2021.meu.pessoa.MeuPessoa;
 
 @Entity
-public class MeuPedido {
+public class MeuPedido extends MeuBaseEntity{
 
-	@Id
-	private String id;
+
 	private Long numero;
 	private Date emitidoEm;
 
@@ -31,10 +31,6 @@ public class MeuPedido {
 	
 	public MeuPedido() {
 
-	}
-
-	public String getId() {
-		return id;
 	}
 
 	public Long getNumero() {

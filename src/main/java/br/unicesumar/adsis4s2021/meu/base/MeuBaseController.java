@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public class MeuBaseController<ENTITY extends MeuBaseEntity, REPO extends JpaRepository<ENTITY, String>> {
 	@Autowired
-	public REPO repo;
+	private REPO repo;
 
 	@DeleteMapping("/{id}")
 	public void deletePeloId(@PathVariable("id") String id) {
@@ -32,7 +32,7 @@ public class MeuBaseController<ENTITY extends MeuBaseEntity, REPO extends JpaRep
 	
 	@PostMapping
 	public String post(@RequestBody ENTITY novo) {
-		if (repo.findById(novo.getId()).isPresent()) {
+		if (novo.getId() != null && repo.findById(novo.getId()).isPresent()) {
 			throw new RuntimeException("Seu registro já existe, faça um put ao invés de post!");
 		}
 		novo = repo.save(novo);
@@ -42,7 +42,7 @@ public class MeuBaseController<ENTITY extends MeuBaseEntity, REPO extends JpaRep
 	@PutMapping("/{id}")
 	public String put(@RequestBody ENTITY modificado, @PathVariable("id") String id) {
 		if (!modificado.getId().equals(id)) {
-			throw new RuntimeException("Para atualizar um registro, os IDs do request devem ser iguais!");
+			throw new RuntimeException("Para atualizar um registro, os Strings do request devem ser iguais!");
 		}
 		if (!repo.findById(id).isPresent()) {
 			throw new RuntimeException("Seu registro não existe, faça um post ao invés de put!");
