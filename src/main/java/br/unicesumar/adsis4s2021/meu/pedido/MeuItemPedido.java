@@ -6,41 +6,39 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import br.unicesumar.adsis4s2021.meu.produto.MeuProduto;
+import br.unicesumar.adsis4s2021.produto.Produto;
 
 @Entity
 public class MeuItemPedido {
-
 	@Id
 	private String id;
-	private BigDecimal precoUnitário;
-	private BigDecimal percentualDesconto;
+	private BigDecimal precoUnitario;
+	private BigDecimal percentualDeDesconto;
 	private BigDecimal quantidade;
-
+	
 	@ManyToOne
-	private MeuProduto produto; // associação!!
+	private Produto produto;
 
 	public MeuItemPedido() {
-
 	}
 
 	public String getId() {
 		return id;
 	}
 
-	public BigDecimal getPrecoUnitário() {
-		return precoUnitário;
+	public BigDecimal getPercentualDeDesconto() {
+		return percentualDeDesconto;
 	}
 
-	public BigDecimal getPercentualDesconto() {
-		return percentualDesconto;
+	public BigDecimal getPrecoUnitario() {
+		return precoUnitario;
 	}
 
 	public BigDecimal getQuantidade() {
 		return quantidade;
 	}
-
-	public MeuProduto getProduto() {
+	
+	public Produto getProduto() {
 		return produto;
 	}
 
